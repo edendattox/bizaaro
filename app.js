@@ -1,11 +1,14 @@
 require("dotenv").config();
 const express = require("express");
+const errorHandler = require("errorhandler");
 const app = express();
 const path = require("path");
 const port = 3000;
 
 const Prismic = require("@prismicio/client");
 const PrismicDOM = require("prismic-dom");
+
+app.use(errorHandler());
 
 const initApi = (req) => {
   return Prismic.getApi(process.env.PRISMIC_ENDPOINT, {
@@ -44,34 +47,32 @@ app.get("/", (req, res) => {
   res.render("pages/home");
 });
 
-app.get("/about", (req, res) => {
-  initApi(req).then((api) => {
-    api
-      .query(Prismic.Predicates.any("document.type", ["about", "meta"]))
-      .then((response) => {
-        const { results } = response;
-        const [about, meta] = results;
-        console.log("res", about.data?.items);
-        about.data.body.forEach((item) => {
-          console.log("item", item.items);
-        });
-        res.render("pages/about", {
-          about,
-          meta,
-        });
-      })
-      .catch((err) => {
-        new Error("err", err);
-      });
+app.get("/about", async (req, res) => {
+  const api = await initApi(req);
+  const about = await api.getSingle("about");
+  const meta = await api.getSingle("meta");
+
+  res.render("pages/about", {
+    about,
+    meta,
   });
 });
 
-app.get("/detail/:uid", (req, res) => {
-  res.render("pages/detail");
+app.get("/detail/:uid", async (req, res) => {
+  const api = await initApi(req);
+  const meta = await api.getSingle("meta");
+  const product = await api.getByUID("product", req.params.uid, {
+    fetchLinks: "collection.title",
+  });
+
+  res.render("pages/detail", {
+    meta,
+    product,
+  });
 });
 
 app.get("/collections", (req, res) => {
-  res.render("pages/collections");
+  res.render("pages/collection");
 });
 
 app.listen(port, () => {
