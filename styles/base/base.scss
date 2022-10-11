@@ -1,0 +1,70 @@
+*,
+*:after,
+*:before {
+  box-sizing: border-box;
+}
+
+html {
+  @extend %cover;
+
+  // ('viewport width' / 'design document width' * 10)
+  // will setup font size so that 5.3rem equals 53px when viewport is 1920px
+  // and will scale responsively.
+  font-size: calc(100vw / 1920 * 10);
+  position: fixed;
+  overflow: hidden;
+  line-height: 1;
+  background-color: $color-background-primary;
+  color: $color-off-white;
+
+  @include media("<phone") {
+    font-size: calc(100vw / 750 * 10);
+  }
+}
+
+body {
+  @extend %description-16;
+  @extend %cover;
+
+  font-family: $font-suisse-bp;
+  position: fixed;
+  // overflow: hidden;
+}
+
+a {
+  color: inherit;
+  outline: none;
+  text-decoration: none;
+}
+
+img {
+  vertical-align: middle;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+
+  &[src] {
+    opacity: 1;
+  }
+}
+
+button {
+  outline: none;
+  background: none;
+  color: inherit;
+  cursor: pointer;
+  border: none;
+}
+
+.content {
+  @extend %cover;
+}
+
+[data-animation="title"],
+[data-animation="label"],
+[data-animation="paragraph"] {
+  span {
+    display: inline-block;
+    overflow: hidden;
+    vertical-align: top;
+  }
+}

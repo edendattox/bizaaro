@@ -1,0 +1,22 @@
+$color-black: #000;
+$color-white: #f9f1e7;
+$color-off-white: #f9f1e7;
+$color-off-black: #37384c;
+$color-background-primary: #c97164;
+$color-background-secondary: #bc978c;
+$color-background-tertiary: #b2b8c3;
+$color-focus: "#FFC400";
+
+$font-george-x: "George X", sans-serif;
+$font-suisse-bp: "Suisse BP", sans-serif;
+
+$ease-out-expo: cubic-bezier(0.19, 1, 0.22, 1);
+
+/* prettier-ignore */
+$z-indexes: (
+  'noscript',
+  'preloader',
+  'navigation',
+  'content',
+  'canvas',
+);
