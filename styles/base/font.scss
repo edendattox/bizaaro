@@ -1,35 +1,20 @@
+/* poppins-300 - latin */
 @font-face {
-  font-family: $font-george-x;
-  src: url("../fonts/george-x-regular.woff2") format("woff2"),
-    url("../fonts/george-x-regular.woff") format("woff");
-  font-weight: normal;
+  font-family: "Poppins";
   font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: $font-suisse-bp;
-  src: url("../fonts/suisse-bp-light.woff2") format("woff2"),
-    url("../fonts/suisse-bp-light.woff") format("woff");
   font-weight: 300;
-  font-style: normal;
-  font-display: swap;
+  src: local(""),
+    /* IE6-IE8 */ url("../fonts/poppins-v20-latin-300.woff2") format("woff2");
 }
+/* poppins-regular - latin */
 
+/* poppins-500 - latin */
 @font-face {
-  font-family: $font-suisse-bp;
-  src: url("../fonts/suisse-bp-ultra-light.woff2") format("woff2"),
-    url("../fonts/suisse-bp-ultra-light.woff") format("woff");
-  font-weight: 200;
+  font-family: "Poppins";
   font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: $font-suisse-bp;
-  src: url("../fonts/suisse-bp-regular.woff2") format("woff2"),
-    url("../fonts/suisse-bp-regular.woff") format("woff");
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
+  font-weight: 500;
+  src: local(""),
+    /* IE6-IE8 */ url("../fonts/poppins-v20-latin-500.woff2") format("woff2"),
+    /* Super Modern Browsers */ url("../fonts/poppins-v20-latin-500.woff")
+      format("woff");
 }

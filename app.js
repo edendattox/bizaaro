@@ -19,7 +19,6 @@ app.use(express.static(path.join(__dirname, "public")));
 
 const Prismic = require("@prismicio/client");
 var PrismicDOM = require("prismic-dom");
-const { log } = require("console");
 const apiEndpoint = process.env.PRISMIC_ENDPOINT;
 
 const initApi = (req) => {
@@ -30,7 +29,6 @@ const initApi = (req) => {
 };
 
 const handleLinkResolver = (doc) => {
-  console.log("log", doc);
   switch (doc.type) {
     case "product":
       return `/detail/${doc.uid}`;
@@ -132,6 +130,8 @@ const handleRequest = async (api) => {
   const navigation = await api.getSingle("navigation");
   const preloader = await api.getSingle("preloader");
 
+  console.log("pre", preloader.data.title);
+
   return {
     metadata,
     navigation,
@@ -149,8 +149,6 @@ app.get("/", async (req, res) => {
       fetchLinks: "product.image",
     }
   );
-
-  console.log("home", home.data.gallery);
 
   res.render("pages/home", { ...defaults, collections, home });
 });

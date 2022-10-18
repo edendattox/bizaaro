@@ -1,7 +1,22 @@
 .about {
+  @extend %page;
+  pointer-events: initial;
+  // background-color: $color-background-tertiary;
+  // color: $color-off-black;
+  opacity: 0;
 }
+
 .about__wrapper {
 }
 
 .about__title {
+  @extend %title-100;
+
+  margin: auto;
+  max-width: 126rem;
+  text-align: center;
+
+  @include media("<phone") {
+    max-width: 67.7rem;
+  }
 }
