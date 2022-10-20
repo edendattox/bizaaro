@@ -1,7 +1,6 @@
 const path = require("path");
 const webpack = require("webpack");
 
-const ESLintPlugin = require("eslint-webpack-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 const ImageMinimizerPlugin = require("image-minimizer-webpack-plugin");
@@ -55,7 +54,6 @@ module.exports = {
         ],
       },
     }),
-    new ESLintPlugin(),
     new CleanWebpackPlugin(),
   ],
 
